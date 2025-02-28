@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Usama - Internship at Al-Junaid Institute</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to My Web Page</h1>
+    </header>
+
+    <section class="content">
+        <p>
+            My name is <strong>Usama</strong>. I am currently doing an internship at <strong>Al-Junaid Institute</strong>. 
+            I am pursuing a degree in <strong>Bachelor of Science in Computer Science (BSCS)</strong>. 
+            I am passionate about web development and always eager to learn new technologies.
+        </p>
+        <img src="img.jpeg" alt="Usama's Image">
+        
+        <p>To learn more about web development, visit <a href="https://www.w3schools.com" target="_blank">W3Schools</a>.</p>
+    </section>
+
+    <section class="form-section">
+        <h2>Contact Me</h2>
+        <form action="#" method="post">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required pattern="[A-Za-z\s]{3,}" title="Only letters and spaces, minimum 3 characters">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required pattern=".{6,}" title="Password must be at least 6 characters long">
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+</body>
+</html>
