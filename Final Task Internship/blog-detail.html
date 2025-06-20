@@ -1,0 +1,130 @@
+<!-- blog-detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog Detail - AL-JUNAID TECH</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    .blog-img {
+      max-height: 400px;
+      object-fit: cover;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">AL-JUNAID TECH</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="blog.html">Back to Blog</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Blog Content -->
+<section class="container my-5">
+  <h2 id="blogTitle">Blog Title Here</h2>
+  <p class="text-muted">Author: Usama | Date: June 12, 2025</p>
+  <img src="img/blog1.jpg" alt="Blog Image" class="img-fluid blog-img mb-4" id="blogImage">
+  <p id="blogContent">
+    This is a sample blog description that will be shown when a blog is selected from the blog listing page. This paragraph will be replaced dynamically based on which blog was clicked.
+  </p>
+</section>
+
+<!-- Comment Form -->
+<section class="container mb-5">
+  <h4>Leave a Comment</h4>
+  <form id="commentForm">
+    <div class="mb-3">
+      <label for="commenterName" class="form-label">Name</label>
+      <input type="text" class="form-control" id="commenterName" placeholder="Your Name">
+    </div>
+    <div class="mb-3">
+      <label for="commentText" class="form-label">Comment</label>
+      <textarea class="form-control" id="commentText" rows="4" placeholder="Write your comment"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Comment</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+  <p>&copy; 2025 AL-JUNAID TECH. All rights reserved.</p>
+</footer>
+
+<!-- Blog Data & JS -->
+<script>
+  const blogList = [
+    {
+      title: "Tech Innovations 2025",
+      content: "Explore the most exciting trends like AI, 6G, and quantum computing shaping 2025 and beyond.",
+      img: "img/blog1.jpg"
+    },
+    {
+      title: "UI/UX Tips for Designers",
+      content: "Design smart interfaces with user-focused simplicity, contrast, and effective layouts.",
+      img: "img/blog2.jpg"
+    },
+    {
+      title: "Cybersecurity Basics",
+      content: "Learn the essentials of protecting your digital assets with modern cybersecurity techniques.",
+      img: "img/blog3.jpg"
+    },
+    {
+      title: "How to Apply Makeup",
+      content: "Step-by-step guide for beginners to achieve a perfect and natural cosmetic look.",
+      img: "img/blog4.jpg"
+    },
+    {
+      title: "Build a Responsive Site",
+      content: "Utilize Bootstrap and media queries to build responsive websites for all devices.",
+      img: "img/blog5.jpg"
+    },
+    {
+      title: "Beauty Products Review",
+      content: "Our review of top beauty products tested by real customers in 2025.",
+      img: "img/blog6.jpg"
+    }
+  ];
+
+  const params = new URLSearchParams(window.location.search);
+  const blogId = parseInt(params.get('blog')) || 1;
+  const blog = blogList[blogId - 1];
+
+  if (blog) {
+    document.getElementById("blogTitle").textContent = blog.title;
+    document.getElementById("blogContent").textContent = blog.content;
+    document.getElementById("blogImage").src = blog.img;
+  }
+
+  // Comment form handling
+  document.getElementById("commentForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const name = document.getElementById("commenterName").value.trim();
+    const comment = document.getElementById("commentText").value.trim();
+
+    if (name === "" || comment === "") {
+      Swal.fire("Error", "Please fill out both fields.", "error");
+      return;
+    }
+
+    Swal.fire("Thank you!", "Your comment has been submitted.", "success");
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
